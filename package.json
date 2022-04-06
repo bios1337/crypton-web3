@@ -9,12 +9,34 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/client": "^3.3.0",
+    "@sanity/image-url": "^1.0.1",
+    "@thirdweb-dev/react": "^2.0.3",
+    "@thirdweb-dev/sdk": "^2.0.23",
+    "chart.js": "^3.7.1",
+    "ethers": "^5.6.2",
     "next": "12.1.4",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-chartjs-2": "^4.0.1",
+    "react-dom": "18.0.0",
+    "react-icons": "^4.3.1",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "8.12.0",
-    "eslint-config-next": "12.1.4"
+    "eslint-config-next": "12.1.4",
+    "husky": "^7.0.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
   }
+  
 }

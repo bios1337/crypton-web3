@@ -15,8 +15,6 @@ const sdk = new ThirdwebSDK(
   )
 );
 
-console.log(sdk);
-
 function Dashboard({ address }) {
   const [sanityTokens, setSanityTokens] = useState([]);
   const [thirdWebTokens, setThirdWebTokens] = useState([]);
@@ -33,26 +31,26 @@ function Dashboard({ address }) {
         sanityTokens.map((token) => sdk.getToken(token.contractAddress))
       );
     };
-    getSanityAndThirdWebCoins();
+    return () => getSanityAndThirdWebCoins();
   }, []);
-
-  console.log(thirdWebTokens, sanityTokens);
 
   return (
     <Wrapper>
       <Sidebar />
-      <MainContainer>
-        <Header
-          walletAddress={address}
-          sanityTokens={sanityTokens}
-          thirdWebTokens={thirdWebTokens}
-        />
-        <Main
-          walletAddress={address}
-          sanityTokens={sanityTokens}
-          thirdWebTokens={thirdWebTokens}
-        />
-      </MainContainer>
+      {sanityTokens && thirdWebTokens && (
+        <MainContainer>
+          <Header
+            walletAddress={address}
+            sanityTokens={sanityTokens}
+            thirdWebTokens={thirdWebTokens}
+          />
+          <Main
+            walletAddress={address}
+            sanityTokens={sanityTokens}
+            thirdWebTokens={thirdWebTokens}
+          />
+        </MainContainer>
+      )}
     </Wrapper>
   );
 }

@@ -20,21 +20,14 @@ function Portfolio({ thirdWebTokens, sanityTokens, walletAddress }) {
       let balances = await Promise.all(
         thirdWebTokens.map(async (token) => {
           const bal = await token.balanceOf(walletAddress);
-          console.log(
-            "hehehe",
-            Number(bal.displayValue),
-            token,
-            tokenToUSD[token.address]
-          );
           return Number(bal.displayValue) * tokenToUSD[token.getAddress()];
         })
       );
       const totalBalance = balances.reduce((acc, curr) => acc + curr, 0);
       setBalance(totalBalance.toLocaleString());
     };
-    return () => {
-      calculateBalance();
-    };
+    calculateBalance();
+    return () => calculateBalance();
   }, [thirdWebTokens, walletAddress, sanityTokens]);
 
   return (

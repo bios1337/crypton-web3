@@ -1,22 +1,71 @@
 import React from "react";
 import styled from "styled-components";
 
-function Header({ walletAddress, connectWallet }) {
+import Link from "next/link";
+import ReactModal from "react-modal";
+import { useRouter } from "next/router";
+import TransferModal from "./modal/TransferModal";
+
+ReactModal.setAppElement("#__next");
+
+function Header({
+  walletAddress,
+  connectWallet,
+  sanityTokens,
+  thirdWebTokens,
+}) {
+  const router = useRouter();
+
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      transform: "translate(-50%, -50%)",
+      backgroundColor: "#0a0b0d",
+      padding: 0,
+      border: "none",
+    },
+    overlay: {
+      backgroundColor: "rgba(10, 11, 13, 0.75)",
+    },
+  };
+
   return (
     <Wrapper>
       <Title>Assets</Title>
       <ButtonContainer>
-        <WalletLink>
-          <WalletLinkTitle>Wallet Connected</WalletLinkTitle>
-          <WalletAddress>
-            {walletAddress.slice(0, 7)}...{walletAddress.slice(35)}
-          </WalletAddress>
-        </WalletLink>
+        {walletAddress ? (
+          <WalletLink>
+            <WalletLinkTitle>Wallet Connected</WalletLinkTitle>
+            <WalletAddress>
+              {walletAddress.slice(0, 7)}...{walletAddress.slice(35)}
+            </WalletAddress>
+          </WalletLink>
+        ) : (
+          <Button onClick={() => connectWallet("injected")}>
+            Connect Wallet
+          </Button>
+        )}
         <Button style={{ backgroundColor: "#3773f5", color: "#000" }}>
           Buy / Sell
         </Button>
-        <Button>Send / Receive</Button>
+        <Link href={"/?transfer=1"} passHref={true}>
+          <Button>Send / Receive</Button>
+        </Link>
       </ButtonContainer>
+      <ReactModal
+        isOpen={!!router.query.transfer}
+        onRequestClose={() => router.push("/")}
+        style={customStyles}
+      >
+        <TransferModal
+          sanityTokens={sanityTokens}
+          thirdWebTokens={thirdWebTokens}
+          walletAddress={walletAddress}
+        />
+      </ReactModal>
     </Wrapper>
   );
 }

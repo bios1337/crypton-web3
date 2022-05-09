@@ -30,15 +30,15 @@ function ReceiveModal({ setAction, walletAddress, selectedToken }) {
         <Row>
           <CoinSelectList>
             <Icon>
-              <Image src={imageUrl} alt="" />
+              <Image src={imageUrl ?? ""} alt="" />
             </Icon>
-            <CoinName>{selectedToken.name}</CoinName>
+            <CoinName>{selectedToken && selectedToken.name}</CoinName>
           </CoinSelectList>
         </Row>
         <Divider />
         <Row>
           <div>
-            <Title>{selectedToken.symbol} Address</Title>
+            <Title>{selectedToken?.symbol} Address</Title>
             <Address>{walletAddress}</Address>
           </div>
           <CopyButton

@@ -7,7 +7,9 @@ import SendModal from "./SendModal";
 
 function TransferModal({ sanityTokens, walletAddress, thirdWebTokens }) {
   const [action, setAction] = useState("send");
-  const [selectedToken, setSelectedToken] = useState(sanityTokens[0]);
+  const [selectedToken, setSelectedToken] = useState(
+    sanityTokens && sanityTokens[0]
+  );
 
   const selectedStyle = {
     color: "#3773f5",

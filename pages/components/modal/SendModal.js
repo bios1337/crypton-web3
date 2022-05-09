@@ -15,7 +15,7 @@ function SendModal({
   const [recepient, setRecepient] = useState("");
   const [imageUrl, setImageUrl] = useState(null);
   const [activeThirdWebToken, setActiveThirdWebToken] = useState(
-    thirdWebTokens[0]
+    thirdWebTokens && thirdWebTokens[0]
   );
   const [balance, setBalance] = useState(0);
 
@@ -100,7 +100,7 @@ function SendModal({
           <FieldName>Pay</FieldName>
           <CoinSelectList onClick={() => setAction("select")}>
             <Icon>
-              <Image crossOrigin="" src={imageUrl} alt="coin icon"/>
+              <Image crossOrigin="" src={imageUrl ?? ""} alt="coin icon" />
             </Icon>
             <CoinName>{selectedToken?.name}</CoinName>
           </CoinSelectList>

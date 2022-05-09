@@ -14,7 +14,7 @@ function CoinSelector({
     <Wrapper>
       <Title>Selected Asset</Title>
       <CoinList>
-        {sanityTokens.map((token, i) => (
+        {sanityTokens?.map((token, i) => (
           <CoinItem
             key={i}
             token={token}

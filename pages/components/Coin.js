@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import Image from "next/image";
 
-function Coin({ coin }) {
+function Coin({ coin = {} }) {
   return (
     <Wrapper>
       <div>
         <div style={{ flex: 2 }}>
           <NameCol>
             <CoinIcon>
-              <Image src={coin.logo} alt={coin.name} />
+              <Image src={coin.logo ?? ""} alt={coin.name} />
             </CoinIcon>
             <div>
               <Primary>{coin.name}</Primary>

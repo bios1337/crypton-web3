@@ -24,7 +24,7 @@ function CoinItem({
     const getBalance = async () => {
       console.log("hehehe", thirdWebTokens, token);
       thirdWebTokens.map((thirdWebToken) => {
-        if (thirdWebToken.getAddress() === token.contractAddress) {
+        if (thirdWebToken.getAddress() === token?.contractAddress) {
           activeThirdWebToken = thirdWebToken;
           console.log("matched");
         }
@@ -45,7 +45,7 @@ function CoinItem({
   return (
     <Wrapper
       style={{
-        backgroundColor: selectedToken.name === token.name && "#141519",
+        backgroundColor: selectedToken?.name === token?.name && "#141519",
       }}
       onClick={() => {
         setSelectedToken(token);
@@ -54,18 +54,18 @@ function CoinItem({
     >
       <Main>
         <Icon>
-          <Image src={imageUrl} alt={token.name} />
+          <Image src={imageUrl ?? ""} alt={token?.name} />
         </Icon>
         <NameDetails>
-          <Name>{token.name}</Name>
-          <Symbol>{token.symbol}</Symbol>
+          <Name>{token?.name}</Name>
+          <Symbol>{token?.symbol}</Symbol>
         </NameDetails>
       </Main>
       <Balance>
-        {balance} {token.symbol}
+        {balance} {token?.symbol}
       </Balance>
       <IsSelected>
-        {Boolean(selectedToken.contractAddress === token.contractAddress) && (
+        {Boolean(selectedToken?.contractAddress === token?.contractAddress) && (
           <FaCheck />
         )}
       </IsSelected>

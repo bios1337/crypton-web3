@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useMetamask } from "@thirdweb-dev/react";
 
 import Link from "next/link";
 import ReactModal from "react-modal";

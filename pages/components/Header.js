@@ -8,13 +8,10 @@ import TransferModal from "./modal/TransferModal";
 
 ReactModal.setAppElement("#__next");
 
-function Header({
-  walletAddress,
-  connectWallet,
-  sanityTokens,
-  thirdWebTokens,
-}) {
+function Header({ walletAddress, sanityTokens, thirdWebTokens }) {
   const router = useRouter();
+
+  const connectWithMetamask = useMetamask();
 
   const customStyles = {
     content: {
@@ -44,9 +41,7 @@ function Header({
             </WalletAddress>
           </WalletLink>
         ) : (
-          <Button onClick={() => connectWallet("injected")}>
-            Connect Wallet
-          </Button>
+          <Button onClick={() => connectWithMetamask()}>Connect Wallet</Button>
         )}
         <Button style={{ backgroundColor: "#3773f5", color: "#000" }}>
           Buy / Sell

@@ -44,6 +44,7 @@ function CoinItem({
 
   return (
     <Wrapper
+      key={key}
       style={{
         backgroundColor: selectedToken?.name === token?.name && "#141519",
       }}

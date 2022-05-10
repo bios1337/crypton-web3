@@ -100,7 +100,14 @@ function SendModal({
           <FieldName>Pay</FieldName>
           <CoinSelectList onClick={() => setAction("select")}>
             <Icon>
-              <Image crossOrigin="" src={imageUrl ?? ""} alt="coin icon" />
+              {imageUrl && (
+                <Image
+                  layout="fill"
+                  crossOrigin=""
+                  src={imageUrl}
+                  alt="coin icon"
+                />
+              )}
             </Icon>
             <CoinName>{selectedToken?.name}</CoinName>
           </CoinSelectList>
@@ -190,6 +197,7 @@ const FieldName = styled.div`
 `;
 
 const Icon = styled.div`
+  position: relative;
   margin-right: 1rem;
   height: 1.8rem;
   width: 1.8rem;

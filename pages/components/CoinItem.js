@@ -54,7 +54,7 @@ function CoinItem({
     >
       <Main>
         <Icon>
-          <Image src={imageUrl ?? ""} alt={token?.name} />
+          {imageUrl && <Image src={imageUrl} alt={token?.name} layout="fill" />}
         </Icon>
         <NameDetails>
           <Name>{token?.name}</Name>
@@ -94,6 +94,7 @@ const Main = styled.div`
 `;
 
 const Icon = styled.div`
+  position: relative;
   margin-right: 1rem;
   height: 1.8rem;
   width: 1.8rem;

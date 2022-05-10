@@ -24,13 +24,15 @@ function ReceiveModal({ setAction, walletAddress, selectedToken }) {
           <Image
             src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${walletAddress}`}
             alt="QR code"
+            width={250}
+            height={250}
           />
         </QRContainer>
         <Divider />
         <Row>
           <CoinSelectList>
             <Icon>
-              <Image src={imageUrl ?? ""} alt="" />
+              {imageUrl && <Image layout="fill" src={imageUrl} alt="" />}
             </Icon>
             <CoinName>{selectedToken && selectedToken.name}</CoinName>
           </CoinSelectList>
@@ -90,6 +92,7 @@ const Row = styled.div`
 `;
 
 const Icon = styled.div`
+position: relative;
   margin-right: 1rem;
   height: 1.8rem;
   width: 1.8rem;

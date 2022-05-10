@@ -10,7 +10,7 @@ function Coin({ coin = {} }) {
         <div style={{ flex: 2 }}>
           <NameCol>
             <CoinIcon>
-              <Image src={coin.logo ?? ""} alt={coin.name} />
+              {coin.logo && <Image src={coin.logo} alt={coin.name} />}
             </CoinIcon>
             <div>
               <Primary>{coin.name}</Primary>

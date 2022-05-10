@@ -14,7 +14,7 @@ function TransferModal({ sanityTokens, walletAddress, thirdWebTokens }) {
   const selectedStyle = {
     color: "#3773f5",
     cursor: "default",
-    "pointer-events": "none",
+    pointerEvents: "none",
   };
 
   const unselectedStyle = {
